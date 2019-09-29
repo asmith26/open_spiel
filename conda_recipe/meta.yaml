@@ -1,0 +1,55 @@
+{% set name = "pyspiel" %}
+{% set version = "0.0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/deepmind/open_spiel.git
+  git_rev: 71d76631feb2e62ee1b90421acf981ee11a28fce
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - git
+    - cmake
+    # If your project compiles code (such as a C extension) then add the required compilers as separate entries here.
+    # Compilers are named 'c', 'cxx' and 'fortran'.
+#    - {{ compiler('c') }}
+  host:
+    - python >=3.6
+    - pip
+  run:
+    - python >=3.6
+    - absl-py ==0.7.1
+    - tensorflow <1.15.0
+    - dm-sonnet ==1.32
+    - IPython ==5.8.0
+    - tensorflow-probability <0.8.0
+    - cvxopt ==1.2.3
+    - networkx ==2.2
+    - mock ==3.0.5
+    - matplotlib ==3.1.1
+    - nashpy ==0.0.19
+    - scipy ==1.1.0
+    - attrs ==19.1.0
+
+#test:
+#  imports:
+#    - pyspiel
+
+about:
+  home: https://github.com/deepmind/open_spiel
+  license: Apache-2.0
+  license_family: Apache
+  license_file: LICENSE
+  summary: 'Simple, fast, extensible JSON encoder/decoder for Python'
+  doc_url: https://openspiel.readthedocs.io/en/latest/
+  dev_url: https://github.com/deepmind/open_spiel
+
+extra:
+  recipe-maintainers:
+    - asmith26
